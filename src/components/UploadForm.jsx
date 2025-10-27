@@ -7,12 +7,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDashboard } from '../context/DashboardContext';
-import { Weight, Percent, Flame, FileText, Camera, CheckCircle } from 'lucide-react';
-import { formatDateForInput } from '../utils/dateUtils';
+import { Calendar, Weight, Percent, Flame, FileText, Camera, Lock, CheckCircle } from 'lucide-react';
+import { formatDateForInput, getDateFromInput, formatDate } from '../utils/dateUtils';
 
 export default function UploadForm() {
   const { 
     addUploadEntry, 
+    canSubmitToday, 
+    nextUpdateDate, 
+    isDateLocked, 
+    updateDay,
     loading 
   } = useDashboard();
 
@@ -28,7 +32,10 @@ export default function UploadForm() {
   const [errors, setErrors] = useState({});
   const [imagePreview, setImagePreview] = useState(null);
 
-  // Always allow editing - no restrictions
+  const today = new Date();
+  const isTodayLocked = isDateLocked(today);
+  const isUpdateDay = today.getDate() === updateDay;
+  // Always allow editing - users can update anytime
   const canEdit = true;
 
   useEffect(() => {

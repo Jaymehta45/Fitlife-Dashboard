@@ -179,6 +179,7 @@ export function DashboardProvider({ children }) {
       dispatch({ type: ACTIONS.ADD_UPLOAD_ENTRY, payload: entry });
       
       // No date locking - users can update anytime
+      
       // Show success toast
       dispatch({ 
         type: ACTIONS.SHOW_TOAST, 
