@@ -50,9 +50,9 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-purple-600 via-violet-600 to-fuchsia-600 text-white p-8 rounded-2xl mb-6 shadow-2xl">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-purple-100 mt-2 text-lg">
+      <div className="bg-white border-2 border-black text-black p-8 rounded-2xl mb-6 shadow-xl">
+        <h1 className="text-3xl font-black">Dashboard</h1>
+        <p className="text-neutral-600 mt-2 text-lg font-bold">
           Track your fitness journey and monitor your progress
         </p>
       </div>

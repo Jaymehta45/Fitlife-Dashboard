@@ -281,3 +281,4 @@ For questions or issues:
 ---
 
 **Note**: This is a frontend-only application. Backend integration requires setting up Supabase or another database service as outlined in the integration section.
+

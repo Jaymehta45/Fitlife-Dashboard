@@ -114,3 +114,4 @@ export default function ProgramCard({ program, onViewDetails, onJoinProgram }) {
     </div>
   );
 }
+

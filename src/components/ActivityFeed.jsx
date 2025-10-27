@@ -8,17 +8,17 @@ import { Clock, TrendingUp, Target, Award, Utensils } from 'lucide-react';
 const getActivityIcon = (type) => {
   switch (type) {
     case 'workout':
-      return <TrendingUp className="w-5 h-5 text-primary-600" />;
+      return <TrendingUp className="w-5 h-5 text-black" />;
     case 'weight':
-      return <Target className="w-5 h-5 text-accent-600" />;
+      return <Target className="w-5 h-5 text-black" />;
     case 'goal':
-      return <Award className="w-5 h-5 text-green-600" />;
+      return <Award className="w-5 h-5 text-black" />;
     case 'nutrition':
-      return <Utensils className="w-5 h-5 text-yellow-600" />;
+      return <Utensils className="w-5 h-5 text-black" />;
     case 'milestone':
-      return <Award className="w-5 h-5 text-purple-600" />;
+      return <Award className="w-5 h-5 text-black" />;
     default:
-      return <Clock className="w-5 h-5 text-neutral-600" />;
+      return <Clock className="w-5 h-5 text-black" />;
   }
 };
 
@@ -53,26 +53,26 @@ export default function ActivityFeed({ activities, title = "Recent Activity" }) 
 
   return (
     <div className="chart-container">
-      <h3 className="text-lg font-semibold text-neutral-900 mb-4">{title}</h3>
+      <h3 className="text-lg font-black text-black mb-4">{title}</h3>
       <div className="space-y-3">
         {activities.map((activity) => (
           <div
             key={activity.id}
-            className={`flex items-start space-x-3 p-4 rounded-lg border shadow-sm ${getActivityColor(activity.type)} animate-slide-up hover:shadow-md transition-all duration-200`}
+            className="flex items-start space-x-3 p-4 rounded-lg border-2 border-black shadow-lg bg-white animate-slide-up hover:shadow-xl transition-all duration-200"
           >
             <div className="flex-shrink-0 mt-0.5">
               {getActivityIcon(activity.type)}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-neutral-900">
+              <p className="text-sm font-black text-black">
                 {activity.title}
               </p>
-              <p className="text-sm text-neutral-600 mt-1">
+              <p className="text-sm text-neutral-600 mt-1 font-bold">
                 {activity.description}
               </p>
               <div className="flex items-center mt-2 space-x-2">
-                <Clock className="w-3 h-3 text-neutral-400" />
-                <span className="text-xs text-neutral-500">
+                <Clock className="w-3 h-3 text-neutral-500" />
+                <span className="text-xs text-neutral-500 font-bold">
                   {formatTime(activity.timestamp)}
                 </span>
               </div>
@@ -86,8 +86,8 @@ export default function ActivityFeed({ activities, title = "Recent Activity" }) 
       
       {activities.length === 0 && (
         <div className="text-center py-8">
-          <Clock className="w-12 h-12 text-neutral-300 mx-auto mb-3" />
-          <p className="text-neutral-500">No recent activity</p>
+          <Clock className="w-12 h-12 text-neutral-600 mx-auto mb-3" />
+          <p className="text-neutral-600 font-bold">No recent activity</p>
         </div>
       )}
     </div>

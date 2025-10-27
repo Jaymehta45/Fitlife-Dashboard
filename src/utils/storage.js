@@ -112,3 +112,4 @@ export const clearAllData = () => {
     removeStorageItem(key);
   });
 };
+

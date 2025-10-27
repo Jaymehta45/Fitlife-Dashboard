@@ -18,7 +18,7 @@ function App() {
   return (
     <DashboardProvider>
       <Router>
-        <div className="min-h-screen bg-gradient-to-br from-violet-50 via-fuchsia-50 to-purple-50">
+        <div className="min-h-screen bg-black">
           <div className="flex">
             {/* Sidebar */}
             <Sidebar />

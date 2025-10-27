@@ -11,7 +11,7 @@ export default function Topbar() {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <header className="bg-white/90 backdrop-blur-sm shadow-lg border-b border-purple-200 px-6 py-4">
+    <header className="bg-white shadow-lg border-b-2 border-black px-6 py-4">
       <div className="flex items-center justify-between">
         {/* Search */}
         <div className="flex-1 max-w-lg">
@@ -24,7 +24,7 @@ export default function Topbar() {
               placeholder="Search workouts, programs, or progress..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full pl-10 pr-3 py-2 border border-purple-200 rounded-lg leading-5 bg-gradient-to-r from-white/90 to-blue-50/50 backdrop-blur-sm placeholder-neutral-500 focus:outline-none focus:placeholder-neutral-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm transition-all duration-200"
+              className="block w-full pl-10 pr-3 py-2 border-2 border-black rounded-lg leading-5 bg-white placeholder-neutral-400 focus:outline-none focus:placeholder-neutral-300 focus:ring-2 focus:ring-black focus:border-black sm:text-sm transition-all duration-200 text-black"
             />
           </div>
         </div>
