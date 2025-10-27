@@ -12,12 +12,16 @@ import {
   MessageSquare, 
   Settings,
   Menu,
-  X
+  X,
+  Activity,
+  UtensilsCrossed
 } from 'lucide-react';
 
 const navigation = [
   { name: 'Overview', href: '/', icon: LayoutDashboard },
   { name: 'Upload Info', href: '/upload', icon: Upload },
+  { name: 'Workouts', href: '/workouts', icon: Activity },
+  { name: 'Calories', href: '/calories', icon: UtensilsCrossed },
   { name: 'Programs', href: '/programs', icon: Dumbbell },
   { name: 'Progress', href: '/progress', icon: TrendingUp },
   { name: 'Messages', href: '/messages', icon: MessageSquare },

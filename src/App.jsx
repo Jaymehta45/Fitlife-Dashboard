@@ -13,6 +13,8 @@ import UploadPage from './pages/UploadPage';
 import ProgramsPage from './pages/ProgramsPage';
 import ProgressPage from './pages/ProgressPage';
 import SettingsPage from './pages/SettingsPage';
+import WorkoutTrackingPage from './pages/WorkoutTrackingPage';
+import CalorieTrackingPage from './pages/CalorieTrackingPage';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
                 <Routes>
                   <Route path="/" element={<DashboardPage />} />
                   <Route path="/upload" element={<UploadPage />} />
+                  <Route path="/workouts" element={<WorkoutTrackingPage />} />
+                  <Route path="/calories" element={<CalorieTrackingPage />} />
                   <Route path="/programs" element={<ProgramsPage />} />
                   <Route path="/progress" element={<ProgressPage />} />
                   <Route path="/settings" element={<SettingsPage />} />
