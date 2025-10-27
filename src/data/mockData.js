@@ -11,24 +11,7 @@ export const mockUser = {
 };
 
 export const mockWeightHistory = [
-  { date: '2024-01-01', weight: 75.2, bodyFat: 18.5, calories: 2200, notes: 'New year resolution' },
-  { date: '2024-01-08', weight: 75.1, bodyFat: 18.4, calories: 2180, notes: 'First week progress' },
-  { date: '2024-01-15', weight: 74.9, bodyFat: 18.3, calories: 2150, notes: 'Consistent workouts' },
-  { date: '2024-01-22', weight: 74.7, bodyFat: 18.1, calories: 2120, notes: 'Diet adjustments' },
-  { date: '2024-01-26', weight: 74.6, bodyFat: 18.0, calories: 2100, notes: 'Monthly check-in' },
-  { date: '2024-02-05', weight: 74.4, bodyFat: 17.8, calories: 2070, notes: 'Great progress' },
-  { date: '2024-02-12', weight: 74.2, bodyFat: 17.6, calories: 2040, notes: 'Diet changes working' },
-  { date: '2024-02-19', weight: 74.0, bodyFat: 17.4, calories: 2010, notes: 'Feeling stronger' },
-  { date: '2024-02-26', weight: 73.8, bodyFat: 17.2, calories: 1980, notes: 'Lean gains' },
-  { date: '2024-03-05', weight: 73.6, bodyFat: 17.0, calories: 1950, notes: 'Summer prep' },
-  { date: '2024-03-12', weight: 73.4, bodyFat: 16.8, calories: 1920, notes: 'Peak condition' },
-  { date: '2024-03-19', weight: 73.2, bodyFat: 16.6, calories: 1890, notes: 'Maintaining' },
-  { date: '2024-03-26', weight: 73.0, bodyFat: 16.4, calories: 1860, notes: 'Cutting phase' },
-  { date: '2024-04-02', weight: 72.8, bodyFat: 16.2, calories: 1830, notes: 'Final push' },
-  { date: '2024-04-09', weight: 72.6, bodyFat: 16.0, calories: 1800, notes: 'Almost there' },
-  { date: '2024-04-16', weight: 72.4, bodyFat: 15.8, calories: 1770, notes: 'Goal achieved' },
-  { date: '2024-04-23', weight: 72.2, bodyFat: 15.6, calories: 1740, notes: 'Maintaining' },
-  { date: '2024-04-26', weight: 72.1, bodyFat: 15.5, calories: 1720, notes: 'Final check-in' },
+  // Start with empty history - user will add their own entries
 ];
 
 export const mockWorkouts = [

@@ -101,9 +101,23 @@ function dashboardReducer(state, action) {
       const newEntry = action.payload;
       console.log('Reducer: ADD_UPLOAD_ENTRY', newEntry);
       console.log('Current state weightHistory:', state.weightHistory);
-      const updatedHistory = [...state.weightHistory, newEntry].sort(
-        (a, b) => new Date(a.date) - new Date(b.date)
-      );
+      
+      // Check if entry with same date already exists
+      const existingIndex = state.weightHistory.findIndex(entry => entry.date === newEntry.date);
+      let updatedHistory;
+      
+      if (existingIndex >= 0) {
+        // Update existing entry
+        updatedHistory = [...state.weightHistory];
+        updatedHistory[existingIndex] = newEntry;
+        console.log('Updated existing entry at index', existingIndex);
+      } else {
+        // Add new entry
+        updatedHistory = [...state.weightHistory, newEntry];
+        updatedHistory.sort((a, b) => new Date(a.date) - new Date(b.date));
+        console.log('Added new entry');
+      }
+      
       console.log('Updated weight history:', updatedHistory);
       return { ...state, weightHistory: updatedHistory };
     

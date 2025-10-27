@@ -47,6 +47,8 @@ export default function DashboardPage() {
     ? `${weightChange.toFixed(1)} kg` 
     : 'No change';
 
+  const currentWeight = recentWeightData.length > 0 ? recentWeightData[recentWeightData.length - 1]?.weight : 0;
+
   return (
     <div className="space-y-6">
       {/* Page Header */}
@@ -83,9 +85,9 @@ export default function DashboardPage() {
         />
         <MetricCard
           title="Current Weight"
-          value={`${recentWeightData[recentWeightData.length - 1]?.weight || 0} kg`}
-          change={weightChangeText}
-          changeType={weightChangeType}
+          value={`${currentWeight ? currentWeight + ' kg' : 'No data'}`}
+          change={recentWeightData.length > 0 ? weightChangeText : 'Add data to track changes'}
+          changeType={recentWeightData.length > 0 ? weightChangeType : 'neutral'}
           icon={TrendingUp}
           color="primary"
         />
@@ -97,7 +99,7 @@ export default function DashboardPage() {
         <div className="lg:col-span-2">
           <LineChart 
             data={recentWeightData} 
-            title="Weight Progress (Last 12 Updates)" 
+            title="Weight Progress" 
           />
         </div>
 
