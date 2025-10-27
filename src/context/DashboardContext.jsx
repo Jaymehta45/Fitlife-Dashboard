@@ -224,7 +224,11 @@ export function DashboardProvider({ children }) {
   };
 
   // Computed values
-  const recentWeightData = getRecentWeightData();
+  // Use state.weightHistory instead of mock data helper to show real-time updates
+  const recentWeightData = state.weightHistory.slice(-12).map(entry => ({
+    ...entry,
+    date: entry.date // Keep the date format from entries
+  }));
   const workoutFrequencyData = getWorkoutFrequencyData();
   const currentWeekData = getCurrentWeekData();
   
