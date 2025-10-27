@@ -6,7 +6,7 @@ import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
 export default function DonutChart({ data, title = "Macros Breakdown" }) {
-  const COLORS = ['#14b8a6', '#ef4444', '#f59e0b', '#8b5cf6', '#3b82f6', '#22c55e'];
+  const COLORS = ['#000000', '#2a2a2a', '#4a4a4a', '#6a6a6a', '#8a8a8a', '#aaaaaa'];
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -50,19 +50,19 @@ export default function DonutChart({ data, title = "Macros Breakdown" }) {
           <PieChart>
             <defs>
               <linearGradient id="proteinGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#14b8a6" />
-                <stop offset="100%" stopColor="#0d9488" />
+                <stop offset="0%" stopColor="#000000" />
+                <stop offset="100%" stopColor="#000000" />
               </linearGradient>
               <linearGradient id="carbsGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#ef4444" />
-                <stop offset="100%" stopColor="#dc2626" />
+                <stop offset="0%" stopColor="#2a2a2a" />
+                <stop offset="100%" stopColor="#2a2a2a" />
               </linearGradient>
               <linearGradient id="fatGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#f59e0b" />
-                <stop offset="100%" stopColor="#d97706" />
+                <stop offset="0%" stopColor="#4a4a4a" />
+                <stop offset="100%" stopColor="#4a4a4a" />
               </linearGradient>
               <filter id="pieShadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="rgba(0,0,0,0.15)"/>
+                <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="rgba(0,0,0,0.2)"/>
               </filter>
             </defs>
             <Pie
@@ -76,8 +76,7 @@ export default function DonutChart({ data, title = "Macros Breakdown" }) {
               filter="url(#pieShadow)"
             >
               {data.map((entry, index) => {
-                const gradientId = index === 0 ? 'proteinGradient' : index === 1 ? 'carbsGradient' : 'fatGradient';
-                return <Cell key={`cell-${index}`} fill={`url(#${gradientId})`} />;
+                return <Cell key={`cell-${index}`} fill={COLORS[index] || '#000000'} />;
               })}
             </Pie>
             <Tooltip content={<CustomTooltip />} />

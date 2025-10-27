@@ -43,41 +43,43 @@ export default function LineChart({ data, title = "Weight Progress" }) {
           <RechartsLineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <defs>
               <linearGradient id="weightGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#14b8a6" stopOpacity={0.8} />
-                <stop offset="100%" stopColor="#14b8a6" stopOpacity={0.1} />
+                <stop offset="0%" stopColor="#000000" stopOpacity={1} />
+                <stop offset="100%" stopColor="#000000" stopOpacity={0.5} />
               </linearGradient>
               <linearGradient id="bodyFatGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#ef4444" stopOpacity={0.8} />
-                <stop offset="100%" stopColor="#ef4444" stopOpacity={0.1} />
+                <stop offset="0%" stopColor="#404040" stopOpacity={1} />
+                <stop offset="100%" stopColor="#404040" stopOpacity={0.5} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#000000" opacity={0.2} />
             <XAxis 
               dataKey="date" 
               tickFormatter={formatDate}
-              stroke="#6b7280"
+              stroke="#000000"
               fontSize={12}
+              tick={{ fill: '#000000', fontWeight: 'bold' }}
             />
             <YAxis 
-              stroke="#6b7280"
+              stroke="#000000"
               fontSize={12}
+              tick={{ fill: '#000000', fontWeight: 'bold' }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Line 
               type="basis" 
               dataKey="weight" 
-              stroke="url(#weightGradient)" 
+              stroke="#000000" 
               strokeWidth={4}
-              dot={{ fill: '#14b8a6', strokeWidth: 3, r: 6, filter: 'drop-shadow(0 2px 4px rgba(20, 184, 166, 0.3))' }}
-              activeDot={{ r: 8, stroke: '#14b8a6', strokeWidth: 3, fill: '#ffffff', filter: 'drop-shadow(0 4px 8px rgba(20, 184, 166, 0.4))' }}
+              dot={{ fill: '#000000', strokeWidth: 2, r: 6 }}
+              activeDot={{ r: 8, stroke: '#000000', strokeWidth: 2, fill: '#ffffff' }}
             />
             <Line 
               type="basis" 
               dataKey="bodyFat" 
-              stroke="url(#bodyFatGradient)" 
+              stroke="#404040" 
               strokeWidth={3}
-              dot={{ fill: '#ef4444', strokeWidth: 3, r: 5, filter: 'drop-shadow(0 2px 4px rgba(239, 68, 68, 0.3))' }}
-              activeDot={{ r: 7, stroke: '#ef4444', strokeWidth: 2, fill: '#ffffff', filter: 'drop-shadow(0 4px 8px rgba(239, 68, 68, 0.4))' }}
+              dot={{ fill: '#404040', strokeWidth: 2, r: 5 }}
+              activeDot={{ r: 7, stroke: '#404040', strokeWidth: 2, fill: '#ffffff' }}
             />
           </RechartsLineChart>
         </ResponsiveContainer>
