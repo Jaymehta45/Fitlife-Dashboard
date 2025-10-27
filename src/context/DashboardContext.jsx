@@ -99,9 +99,12 @@ function dashboardReducer(state, action) {
     
     case ACTIONS.ADD_UPLOAD_ENTRY:
       const newEntry = action.payload;
+      console.log('Reducer: ADD_UPLOAD_ENTRY', newEntry);
+      console.log('Current state weightHistory:', state.weightHistory);
       const updatedHistory = [...state.weightHistory, newEntry].sort(
         (a, b) => new Date(a.date) - new Date(b.date)
       );
+      console.log('Updated weight history:', updatedHistory);
       return { ...state, weightHistory: updatedHistory };
     
     case ACTIONS.SET_THEME:
@@ -147,6 +150,9 @@ export function DashboardProvider({ children }) {
     try {
       dispatch({ type: ACTIONS.SET_LOADING, payload: true });
       
+      console.log('Adding upload entry:', entry);
+      console.log('Current weight history:', state.weightHistory);
+      
       // TODO: Replace with Supabase insert
       // const { data, error } = await supabase
       //   .from('uploads')
@@ -175,6 +181,8 @@ export function DashboardProvider({ children }) {
           type: 'success' 
         } 
       });
+      
+      console.log('Entry added successfully');
       
     } catch (error) {
       console.error('Error adding upload entry:', error);
