@@ -78,7 +78,7 @@ export const addSubmittedDate = (dateString) => {
 // User preferences functions
 export const getUserPreferences = () => {
   return getStorageItem(STORAGE_KEYS.USER_PREFERENCES, {
-    theme: 'dribbble',
+    theme: 'monotone',
     updateDay: 26,
     notifications: true
   });
@@ -90,7 +90,7 @@ export const setUserPreferences = (preferences) => {
 
 // Theme functions
 export const getTheme = () => {
-  return getStorageItem(STORAGE_KEYS.THEME, 'dribbble');
+  return getStorageItem(STORAGE_KEYS.THEME, 'monotone');
 };
 
 export const setTheme = (theme) => {

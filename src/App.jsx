@@ -2,9 +2,9 @@
 // TODO: Add authentication routing when integrating Clerk
 // TODO: Add error boundaries for production
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DashboardProvider } from './context/DashboardContext';
+import { DashboardProvider, useDashboard } from './context/DashboardContext';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import Toast from './components/Toast';
@@ -14,11 +14,17 @@ import ProgramsPage from './pages/ProgramsPage';
 import ProgressPage from './pages/ProgressPage';
 import SettingsPage from './pages/SettingsPage';
 
-function App() {
+function AppContent() {
+  const { theme } = useDashboard();
+
+  useEffect(() => {
+    // Apply theme class to body on mount and theme change
+    document.body.className = `theme-${theme}`;
+  }, [theme]);
+
   return (
-    <DashboardProvider>
-      <Router>
-        <div className="min-h-screen bg-black">
+    <Router>
+      <div className={`min-h-screen ${theme === 'monotone' ? 'bg-black' : 'bg-gradient-to-br from-violet-50 via-fuchsia-50 to-purple-50'}`}>
           <div className="flex">
             {/* Sidebar */}
             <Sidebar />
@@ -45,6 +51,14 @@ function App() {
           <Toast />
         </div>
       </Router>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DashboardProvider>
+      <AppContent />
     </DashboardProvider>
   );
 }

@@ -8,51 +8,128 @@
   }
   
   body {
-    @apply bg-black text-white font-sans;
+    @apply text-white font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Monotone theme (black and white) */
+  body.theme-monotone {
+    @apply bg-black text-white;
+  }
+
+  /* Gradient theme (colorful gradients) */
+  body.theme-gradient {
+    @apply bg-gradient-to-br from-violet-50 via-fuchsia-50 to-purple-50 text-neutral-900;
+  }
+
+  body.theme-gradient * {
+    @apply border-neutral-200;
+  }
+
+  body.theme-monotone * {
+    @apply border-black;
   }
 }
 
 @layer components {
-  .btn-primary {
+  /* Monotone theme buttons */
+  .theme-monotone .btn-primary {
     @apply bg-black hover:bg-neutral-800 text-white font-bold px-4 py-2 rounded-lg border-2 border-black transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
   }
   
-  .btn-secondary {
+  .theme-monotone .btn-secondary {
     @apply bg-white hover:bg-neutral-100 text-black font-bold px-4 py-2 rounded-lg border-2 border-black transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black shadow-md hover:shadow-lg;
+  }
+
+  /* Gradient theme buttons */
+  .theme-gradient .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-medium px-4 py-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .theme-gradient .btn-secondary {
+    @apply bg-gradient-to-r from-white to-blue-50 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-neutral-700 font-medium px-4 py-2 rounded-lg border border-purple-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 shadow-md hover:shadow-lg;
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-lg border-2 border-black p-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    @apply rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+  }
+  
+  .theme-monotone .card {
+    @apply bg-white border-2 border-black;
+  }
+
+  .theme-gradient .card {
+    @apply bg-gradient-to-br from-white/90 via-blue-50/30 to-purple-50/30 backdrop-blur-sm border border-white/20;
   }
   
   .card-gradient {
-    @apply bg-white rounded-xl shadow-lg border-2 border-black p-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    @apply rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+  }
+
+  .theme-monotone .card-gradient {
+    @apply bg-white border-2 border-black;
+  }
+
+  .theme-gradient .card-gradient {
+    @apply bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm border border-white/30;
   }
   
   .input-field {
-    @apply w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition-all duration-200 bg-white text-black;
+    @apply w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200;
+  }
+
+  .theme-monotone .input-field {
+    @apply border-2 border-black bg-white text-black focus:ring-black;
+  }
+
+  .theme-gradient .input-field {
+    @apply border border-neutral-300 bg-white/80 backdrop-blur-sm text-neutral-900 focus:ring-primary-500 focus:border-transparent;
   }
   
   .sidebar-link {
     @apply flex items-center px-5 py-4 text-lg font-bold rounded-xl transition-all duration-200 min-h-[60px];
   }
   
-  .sidebar-link-active {
+  .theme-monotone .sidebar-link-active {
     @apply bg-white text-black shadow-lg border-2 border-black;
   }
+
+  .theme-gradient .sidebar-link-active {
+    @apply bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transform scale-105;
+  }
   
-  .sidebar-link-inactive {
+  .theme-monotone .sidebar-link-inactive {
     @apply text-white hover:text-white hover:bg-neutral-800 border-2 border-transparent hover:border-white;
+  }
+
+  .theme-gradient .sidebar-link-inactive {
+    @apply text-neutral-600 hover:text-neutral-900 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:shadow-md hover:scale-105;
   }
   
   .metric-card-gradient {
-    @apply bg-white rounded-2xl shadow-xl border-2 border-black p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02];
+    @apply rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02];
+  }
+
+  .theme-monotone .metric-card-gradient {
+    @apply bg-white border-2 border-black;
+  }
+
+  .theme-gradient .metric-card-gradient {
+    @apply bg-gradient-to-br from-white via-violet-50/30 to-fuchsia-50/30 backdrop-blur-sm border border-purple-200/50;
   }
   
   .chart-container {
-    @apply bg-white rounded-2xl shadow-xl border-2 border-black p-6 transition-all duration-300 hover:shadow-2xl relative overflow-hidden;
+    @apply rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl relative overflow-hidden;
+  }
+
+  .theme-monotone .chart-container {
+    @apply bg-white border-2 border-black;
+  }
+
+  .theme-gradient .chart-container {
+    @apply bg-gradient-to-br from-white via-purple-50/40 to-violet-50/40 backdrop-blur-sm border border-purple-200/50;
   }
   
   .chart-container::before {

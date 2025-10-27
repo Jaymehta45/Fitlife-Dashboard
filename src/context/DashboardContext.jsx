@@ -212,6 +212,8 @@ export function DashboardProvider({ children }) {
   const updateTheme = (theme) => {
     setTheme(theme);
     dispatch({ type: ACTIONS.SET_THEME, payload: theme });
+    // Update body class for CSS theme switching
+    document.body.className = `theme-${theme}`;
   };
 
   const updateUpdateDay = (day) => {
