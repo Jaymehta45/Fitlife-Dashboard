@@ -7,16 +7,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDashboard } from '../context/DashboardContext';
-import { Calendar, Weight, Percent, Flame, FileText, Camera, Lock, CheckCircle } from 'lucide-react';
-import { formatDateForInput, getDateFromInput, formatDate } from '../utils/dateUtils';
+import { Weight, Percent, Flame, FileText, Camera, CheckCircle } from 'lucide-react';
+import { formatDateForInput } from '../utils/dateUtils';
 
 export default function UploadForm() {
   const { 
     addUploadEntry, 
-    canSubmitToday, 
-    nextUpdateDate, 
-    isDateLocked, 
-    updateDay,
     loading 
   } = useDashboard();
 
@@ -32,11 +28,8 @@ export default function UploadForm() {
   const [errors, setErrors] = useState({});
   const [imagePreview, setImagePreview] = useState(null);
 
-  const today = new Date();
-  const isTodayLocked = isDateLocked(today);
-  const isUpdateDay = today.getDate() === updateDay;
-  // Temporarily allow editing always for testing purposes
-  const canEdit = true; // isUpdateDay && !isTodayLocked;
+  // Always allow editing - no restrictions
+  const canEdit = true;
 
   useEffect(() => {
     // Reset form when date changes
@@ -124,46 +117,26 @@ export default function UploadForm() {
 
     await addUploadEntry(entry);
     
-    // Reset form after successful submission
-    setFormData({
-      date: formatDateForInput(new Date()),
-      weight: '',
-      bodyFat: '',
-      calories: '',
-      notes: '',
-      photo: null
-    });
-    setImagePreview(null);
+    // Don't reset form - allow user to update again immediately
+    // Keep the values so user can modify and submit again
+    // setFormData({
+    //   date: formatDateForInput(new Date()),
+    //   weight: '',
+    //   bodyFat: '',
+    //   calories: '',
+    //   notes: '',
+    //   photo: null
+    // });
+    // setImagePreview(null);
   };
 
-  const getStatusMessage = () => {
-    if (!isUpdateDay) {
-      return {
-        type: 'info',
-        icon: <Calendar className="w-5 h-5" />,
-        message: `Next update available on ${formatDate(nextUpdateDate())}`,
-        description: `Updates are only allowed on the ${updateDay}th of each month.`
-      };
-    }
-    
-    if (isTodayLocked) {
-      return {
-        type: 'warning',
-        icon: <Lock className="w-5 h-5" />,
-        message: 'Today\'s entry has already been submitted',
-        description: `You can update again on ${formatDate(nextUpdateDate())}.`
-      };
-    }
-    
-    return {
-      type: 'success',
-      icon: <CheckCircle className="w-5 h-5" />,
-      message: 'Ready to update your progress',
-      description: 'Fill out the form below to record today\'s measurements.'
-    };
+  // Always show success status since editing is always allowed
+  const status = {
+    type: 'success',
+    icon: <CheckCircle className="w-5 h-5" />,
+    message: 'Ready to update your progress',
+    description: 'Fill out the form below to record your measurements. You can update values as many times as you want.'
   };
-
-  const status = getStatusMessage();
 
   return (
     <div className="max-w-2xl mx-auto">

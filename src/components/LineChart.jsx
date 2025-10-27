@@ -32,21 +32,6 @@ export default function LineChart({ data, title = "Weight Progress" }) {
     return null;
   };
 
-  // If no data, show a message
-  if (!data || data.length === 0) {
-    return (
-      <div className="chart-container relative">
-        <h3 className="text-lg font-bold text-black mb-4">{title}</h3>
-        <div className="h-64 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-gray-600 text-lg mb-2">No data yet</p>
-            <p className="text-gray-500">Go to Upload Info to add your first entry</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="chart-container relative">
       <h3 className="text-lg font-bold text-black mb-4">{title}</h3>
