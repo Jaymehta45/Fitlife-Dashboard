@@ -134,8 +134,8 @@ export default function UploadForm() {
   const status = {
     type: 'success',
     icon: <CheckCircle className="w-5 h-5" />,
-    message: 'Ready to update your progress',
-    description: 'Fill out the form below to record your measurements. You can update values as many times as you want.'
+    message: 'Update your measurements anytime',
+    description: 'You can update weight and body fat as many times as needed. Changes will instantly reflect in your progress charts.'
   };
 
   return (

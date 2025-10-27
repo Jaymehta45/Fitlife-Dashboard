@@ -178,20 +178,12 @@ export function DashboardProvider({ children }) {
       // For now, add to local state
       dispatch({ type: ACTIONS.ADD_UPLOAD_ENTRY, payload: entry });
       
-      // Update lock data
-      const dateString = entry.date;
-      addSubmittedDate(dateString);
-      
-      // Update lock data in state
-      const newLockData = getUploadLockData();
-      dispatch({ type: ACTIONS.SET_LOCK_DATA, payload: newLockData });
-      
+      // No date locking - users can update anytime
       // Show success toast
-      const nextUpdate = getNextUpdateDate(new Date(), state.updateDay);
       dispatch({ 
         type: ACTIONS.SHOW_TOAST, 
         payload: { 
-          message: `Entry saved — locked until ${nextUpdate.toLocaleDateString()}`, 
+          message: `Entry saved successfully!`, 
           type: 'success' 
         } 
       });
